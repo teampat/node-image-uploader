@@ -1,0 +1,29 @@
+image_size_config:
+  thumbnail:
+    max_width: 768
+    max_height: 768
+  medium:
+    max_width: 1024
+    max_height: 1024
+  large: 
+    max_width: 2048
+    max_height: 2048
+
+file_type_config:
+  jpg: 
+    quality: 80
+  webp: 
+    quality: 75
+  png:
+    compression_level: 9
+    
+image_sizes:
+  - thumbnail
+  - medium
+  - large
+
+file_types_output:
+  - jpg
+  - png
+  - webp
+  - avif
