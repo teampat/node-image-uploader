@@ -73,7 +73,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
+          fit: item.search('-crop') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .jpeg({
           quality: config['file_type_config']['jpg']['quality'],
@@ -105,7 +105,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
+          fit: item.search('-crop') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .png({
           compressionLevel:
@@ -138,7 +138,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
+          fit: item.search('-crop') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .webp({
           quality: config['file_type_config']['webp']['quality'],
@@ -172,7 +172,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
           height: config['image_size_config'][`${item}`]['max_height'],
           fit: sharp.fit.inside,
         })
-        .avif({ quality: 65, effort: 6, chromaSubsampling: '4:2:0' })
+        .avif({ quality: config['file_type_config']['avif']['quality'], effort: 6, chromaSubsampling: '4:2:0' })
         .toFile(
           path.resolve(
             req.file.destination,

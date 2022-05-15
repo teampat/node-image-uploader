@@ -1,5 +1,5 @@
 image_size_config:
-  thumbnail-square:
+  thumbnail-crop:
     max_width: 512
     max_height: 512
   thumbnail:
@@ -17,11 +17,13 @@ file_type_config:
     quality: 80
   webp: 
     quality: 75
+  avif: 
+    quality: 65
   png:
     compression_level: 9
     
 image_sizes:
-  - thumbnail-square
+  - thumbnail-crop
   - thumbnail
   - medium
   - large
