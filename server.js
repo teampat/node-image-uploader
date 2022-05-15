@@ -38,12 +38,13 @@ const upload = multer({
       file.mimetype == 'image/svg'
     ) {
       callback(null, true);
+    } else {
+      res.status(400).json({
+        success: false,
+        message: 'Input type file accept only images',
+      });
     }
   },
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/upload', upload.single('image'), async (req, res) => {
@@ -72,7 +73,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: sharp.fit.inside,
+          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .jpeg({
           quality: config['file_type_config']['jpg']['quality'],
@@ -104,7 +105,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: sharp.fit.inside,
+          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .png({
           compressionLevel:
@@ -137,7 +138,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .resize({
           width: config['image_size_config'][`${item}`]['max_width'],
           height: config['image_size_config'][`${item}`]['max_height'],
-          fit: sharp.fit.inside,
+          fit: item.search('-square') !== -1 ? sharp.fit.cover : sharp.fit.inside,
         })
         .webp({
           quality: config['file_type_config']['webp']['quality'],
@@ -182,14 +183,13 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     });
   }
 
-  let files_output = {}
-  files_output['original'] = req.file;
-  files_output['files'] = files;
-
   res.json({
     success: true,
     message: 'File Uploaded Successfully',
-    data: files_output,
+    data: {
+      original: req.file,
+      files,
+    },
   });
 });
 
