@@ -1,12 +1,13 @@
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
-const sharp = require('sharp');
-const fs = require('fs');
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import sharp from 'sharp';
+import fs from 'fs';
+import crypto from 'crypto';
+import YAML from 'yaml';
+
 const app = express();
 const port = 3000;
-const crypto = require('crypto');
-const YAML = require('yaml');
 
 sharp.cache(false);
 
@@ -66,7 +67,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         mimetype: 'image/jpeg',
         destination: `${req.file.destination}resize`,   
         size: item,
-        path: `${req.file.destination}resize/${extArray[0]}-${item}.jpg`,
+        path: `${req.file.destination}${extArray[0]}-${item}.jpg`,
         filename: `${extArray[0]}-${item}.jpg`
       });
       await sharp(req.file.path)
@@ -82,7 +83,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .toFile(
           path.resolve(
             req.file.destination,
-            'resize',
             `${extArray[0]}-${item}.jpg`
           )
         );
@@ -98,7 +98,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         mimetype: 'image/png',
         destination: `${req.file.destination}resize`,   
         size: item,
-        path: `${req.file.destination}resize/${extArray[0]}-${item}.png`,
+        path: `${req.file.destination}${extArray[0]}-${item}.png`,
         filename: `${extArray[0]}-${item}.png`
       });
       await sharp(req.file.path)
@@ -115,7 +115,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .toFile(
           path.resolve(
             req.file.destination,
-            'resize',
             `${extArray[0]}-${item}.png`
           )
         );
@@ -131,7 +130,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         mimetype: 'image/webp',
         destination: `${req.file.destination}resize`,   
         size: item,
-        path: `${req.file.destination}resize/${extArray[0]}-${item}.webp`,
+        path: `${req.file.destination}${extArray[0]}-${item}.webp`,
         filename: `${extArray[0]}-${item}.webp`
       });
       await sharp(req.file.path)
@@ -147,7 +146,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .toFile(
           path.resolve(
             req.file.destination,
-            'resize',
             `${extArray[0]}-${item}.webp`
           )
         );
@@ -163,7 +161,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         mimetype: 'image/avif',
         destination: `${req.file.destination}resize`,   
         size: item,
-        path: `${req.file.destination}resize/${extArray[0]}-${item}.avif`,
+        path: `${req.file.destination}${extArray[0]}-${item}.avif`,
         filename: `${extArray[0]}-${item}.avif`
       });
       await sharp(req.file.path)
@@ -176,7 +174,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         .toFile(
           path.resolve(
             req.file.destination,
-            'resize',
             `${extArray[0]}-${item}.avif`
           )
         );
