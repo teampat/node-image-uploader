@@ -62,7 +62,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     req.file.mimetype == 'image/jpeg' &&
     config['file_types_output'].indexOf('jpg') !== -1
   ) {
-    config.image_sizes.forEach(async (item) => {
+    config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/jpeg',
         destination: `${req.file.destination}resize`,   
@@ -93,7 +93,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     req.file.mimetype == 'image/png' &&
     config['file_types_output'].indexOf('png') !== -1
   ) {
-    config.image_sizes.forEach(async (item) => {
+    config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/png',
         destination: `${req.file.destination}resize`,   
@@ -125,7 +125,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     (req.file.mimetype == 'image/jpeg' || req.file.mimetype == 'image/png') &&
     config['file_types_output'].indexOf('webp') !== -1
   ) {
-    config.image_sizes.forEach(async (item) => {
+    config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/webp',
         destination: `${req.file.destination}resize`,   
@@ -156,7 +156,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     (req.file.mimetype == 'image/jpeg' || req.file.mimetype == 'image/png') &&
     config['file_types_output'].indexOf('avif') !== -1
   ) {
-    config.image_sizes.forEach(async (item) => {
+    config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/avif',
         destination: `${req.file.destination}resize`,   

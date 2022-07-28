@@ -22,7 +22,7 @@ file_type_config:
   png:
     compression_level: 9
     
-image_sizes:
+image_sizes_output:
   - thumbnail-crop
   - thumbnail
   - medium
