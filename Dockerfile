@@ -6,7 +6,7 @@ COPY package*.json config.yml server.js ./
 
 RUN npm install --only=prod
 
-RUN mkdir -p /usr/src/app/uploads/resize
+RUN mkdir /usr/src/app/uploads
 
 EXPOSE 3000
 CMD [ "node", "server.js" ]
