@@ -65,7 +65,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/jpeg',
-        destination: `${req.file.destination}resize`,   
+        destination: `${req.file.destination}`,   
         size: item,
         path: `${req.file.destination}${extArray[0]}-${item}.jpg`,
         filename: `${extArray[0]}-${item}.jpg`
@@ -96,7 +96,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/png',
-        destination: `${req.file.destination}resize`,   
+        destination: `${req.file.destination}`,   
         size: item,
         path: `${req.file.destination}${extArray[0]}-${item}.png`,
         filename: `${extArray[0]}-${item}.png`
@@ -128,7 +128,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/webp',
-        destination: `${req.file.destination}resize`,   
+        destination: `${req.file.destination}`,   
         size: item,
         path: `${req.file.destination}${extArray[0]}-${item}.webp`,
         filename: `${extArray[0]}-${item}.webp`
@@ -159,7 +159,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     config.image_sizes_output.forEach(async (item) => {
       files.push({
         mimetype: 'image/avif',
-        destination: `${req.file.destination}resize`,   
+        destination: `${req.file.destination}`,   
         size: item,
         path: `${req.file.destination}${extArray[0]}-${item}.avif`,
         filename: `${extArray[0]}-${item}.avif`
