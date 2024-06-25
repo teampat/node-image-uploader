@@ -50,7 +50,7 @@ file_type_config:
     quality: 65
   png:
     compression_level: 9
-    
+
 image_sizes_output:
   - thumbnail-crop
   - thumbnail
@@ -63,6 +63,7 @@ file_types_output:
   - webp
   - avif
 ```
+Note: Require to add items to image_sizes_output and file_types_output for specific sizes and specific file types.
 
 ## Usage
 
