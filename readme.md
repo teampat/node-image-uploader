@@ -94,4 +94,4 @@ Note: Require to add items to image_sizes_output and file_types_output for speci
 ```bash
 curl -X POST http://localhost:3000/upload -F "image=@/path/to/image.jpg"
 ```
-Note: uploads is the destination directory where the output images are stored.
+Note: uploads/ is the destination directory where the output images are stored.
