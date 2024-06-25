@@ -1,6 +1,6 @@
 # Node Image Uploader
 
-This is an Express.js API for uploading, compressing, resizing, and converting images. The API supports multiple image formats including JPEG, PNG, WebP, and AVIF. It uses `multer` for handling file uploads, `sharp` for image processing, and `yaml` for configuration.
+This is an Express.js API for compressing, resizing, and converting images. The API supports multiple image formats including JPEG, PNG, WebP, and AVIF. It uses `multer` for handling file uploads, `sharp` for image processing, and `yaml` for configuration.
 
 ## Table of Contents
 
